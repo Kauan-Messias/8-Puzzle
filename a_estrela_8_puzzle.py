@@ -52,7 +52,7 @@ def verificar_solucao(tabuleiro):
     inversoes = 0
 
     for i in range(len(lista)):
-        for j in (i + 1, len(lista)):
+        for j in range(i + 1, len(lista)):
             if lista[i] > lista[j]: #se a peça da esquerda for maior que a da direita
                 inversoes +=  1 #´é uma possivel inversão
                 
@@ -80,7 +80,7 @@ def resolver_puzzle(estado_inicial):
             if possibilidade.estado_atual not in estados_conhecidos:
                 estados_conhecidos.add(possibilidade.estado_atual)   #adiciona o estado atual em estados conhecidos
                 heapq.heappush(fila_de_prioridade, possibilidade)    #adiciona uma nova possibilidade
-        return None
+    return None
 
 def print_tabuleiro(tabuleiro):
     for i in range(0, 9, 3):
@@ -98,7 +98,7 @@ if __name__ == "__main__":
         
         if len(estado_inicial) != 9 or set(estado_inicial) != set(range(9)):    #valida a entrada do usuario
             print("erro...")
-        elif not verificar_solucao:
+        elif not verificar_solucao(estado_inicial):
             print("Tabuleiro impossivel de se resolver")
             print_tabuleiro(estado_inicial)
         else:
